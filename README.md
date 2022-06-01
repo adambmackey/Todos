@@ -17,3 +17,5 @@ Other Features
 
 Database Model 
 ===============
+
+![Database Model](Screen%20Shot%202022-06-01%20at%204.53.24%20PM.png)

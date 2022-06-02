@@ -23,6 +23,24 @@ const crossTask = (taskId) => {
   setTasks(updatedTasks)
 }
 
+const updateTask = (taskId, text) => {
+  console.log('updateTask', taskId, text)
+  let updatedTasks = tasks.map(item => {
+    if(item.id === taskId) {
+      item.task_item = text
+    }
+    return item
+    
+  })
+  setTasks(updatedTasks)
+}
+
+const removeTask = (taskId) => {
+  let updatedTasks= tasks.filter(item => {
+    return item.id !== taskId 
+  })
+  setTasks(updatedTasks)
+}
 
 
   return (
@@ -34,6 +52,8 @@ const crossTask = (taskId) => {
             key={task.id} 
             task={task} 
             crossTask={crossTask}
+            removeTask={removeTask}
+            updateTask={updateTask}
             />
         })}
         </ul>

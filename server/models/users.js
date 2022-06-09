@@ -1,4 +1,4 @@
-const { Sequelize, DataTypes } = require('sequelize');
+const { Sequelize, DataTypes, Model } = require('sequelize');
 
 const sequelize = require('../conections');
 
@@ -12,11 +12,11 @@ User.init({
     type: DataTypes.INTEGER,
     allowNull: false
   },
-  first_name: {
+  first: {
     type: DataTypes.STRING,
     allowNull: false
   },
-  last_name: {
+  last: {
     type: DataTypes.STRING,
     allowNull: false
   }, 
@@ -37,7 +37,8 @@ User.init({
 }, {
   // Other model options go here
   sequelize, // We need to pass the connection instance
-  modelName: 'User' // We need to choose the model name
+  modelName: 'User',
+  freezeTableName: true // We need to choose the model name
 });
 
 module.exports = User

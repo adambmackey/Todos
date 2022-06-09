@@ -1,4 +1,5 @@
-const { Sequelize, DataTypes } = require('sequelize');
+const { defaultMaxListeners } = require('events');
+const { Sequelize, DataTypes, Model } = require('sequelize');
 
 const sequelize = require('../conections');
 const User = require('./users');
@@ -19,7 +20,8 @@ List.init({
   },
   crossed: {
     type: DataTypes.BOOLEAN,
-    allowNull: true
+    allowNull: true,
+    defaultValue: false
   }, 
   user_id: {
     type: DataTypes.INTEGER,

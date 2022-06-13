@@ -15,11 +15,11 @@ const AddTodo = ({addNewTask}) => {
   return (
     <div>
       <form onSubmit={handleSubmit} > 
-      <div>
-          <label>Add Todo Item</label>
-          <input value={task} onChange={(e) => setTask(e.target.value)} type="text"/>
-        </div>
+      <div className='newListForm' >
+        
+          <input value={task} onChange={(e) => setTask(e.target.value)} type="text" placeholder='Add new task'/>
         <button type="submit">Add Todo</button>
+        </div>
       </form>
     </div>
   )

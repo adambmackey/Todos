@@ -10,22 +10,27 @@ const TaskItem = ({ task, crossTask, removeTask, updateTask}) => {
   }
 
   return (
-    <>
-      <li key={task.id}>
+  
+      <div key={task.id} className="listItem">
+        <div className="listItemTop">
         <span className={task.completed ? "cross-out" : ""}>
           {task.task_item}
-        </span>
-        <button onClick={() => crossTask(task.id)}>Done</button>
-        <button onClick={() => setShowEdit(!showEdit)}>{showEdit ? "Cancel" : "Edit"}</button>
-        <button onClick={() => removeTask(task.id)}>remove</button>
-      </li>
+        </span >
+        <div >
+        <button className="btn" onClick={() => crossTask(task.id)}>Done</button>
+        <button className="btn" onClick={() => setShowEdit(!showEdit)}>{showEdit ? "Cancel" : "Edit"}</button>
+        <button className="btn" onClick={() => removeTask(task.id)}>remove</button>
+        </div>
+        </div>
+     
       { showEdit && (
-      <div>
+      <div className="listItemBottom">
         <input onChange={(e) => setNewText(e.target.value)} value={newText} type="text"/>
-        <button onClick={handleEdit}>submit</button>
+        <button className="btn" onClick={handleEdit}>submit</button>
       </div>
-      )}   
-    </>
+
+      )}
+       </div>   
   );
 };
 

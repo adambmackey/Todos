@@ -7,6 +7,7 @@ import Header from "./components/Header";
 
 function App() {
   return <BrowserRouter>
+    <div className="container">
     <Header/>
     <Routes>
     <Route path="/" exact element={<Login/>} />
@@ -15,6 +16,7 @@ function App() {
     <Route path="/list/:id" exact element={<List/>} />
    
     </Routes>
+    </div>
   </BrowserRouter>
 }
 

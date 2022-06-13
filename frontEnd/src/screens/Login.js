@@ -41,7 +41,7 @@ const handleLoginSubmit = async (e) => {
 
 
   return (
-    <div> 
+    <div className="mainCard"> 
       <form onSubmit={handleLoginSubmit}>
         <div>
           <label>UserName</label>

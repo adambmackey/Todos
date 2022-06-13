@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: Helvetica, Arial, sans-serif;
 }
 
 
@@ -9,7 +10,8 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px;
+    width: 75%;
+    padding: 20px 0;
 
 }
 
@@ -22,3 +24,113 @@ header {
 .cross-out {
     text-decoration: line-through;
 }
+
+.container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    flex-direction: column;
+}
+
+.mainCard {
+    display: flex;
+    justify-content: center;
+    background-color: red;
+    width: 75%;
+    margin-top: 70px;
+    border-radius: 20px;
+    -webkit-box-shadow: 13px 12px 18px 2px rgba(0,0,0,0.4); 
+    box-shadow: 13px 12px 18px 2px rgba(0,0,0,0.4);
+    min-width: 300px;
+    max-width: 800px;
+}
+
+.cardContent {
+    width: 90%;
+    padding: 30px 0 ;
+}
+
+.newListForm {
+    display: flex;
+    justify-content: space-between;
+
+    padding: 20px;
+    border-radius: 10px;
+    background-color: blue;
+}
+
+.newListForm >input {
+    width: 50%;
+    border-radius: 5px;
+    border: none;
+    padding: 0 10px;
+}
+.newListForm >button {
+    width: 15%;
+    padding: 5px 0;
+    border: none;
+    border-radius: 5px;
+}
+.listItem {
+    display: flex;
+    flex-direction: column;
+    margin: 15px 0;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: green;
+}
+.listItemTop, .listItemBottom {
+    display: flex;
+    justify-content: space-between;
+    margin: 5px 0;
+}
+
+a {
+    text-decoration: none;
+}
+.listItemTop >a {
+    color: white;
+    width: 50%;
+
+}
+.listItemTop >div {
+    width: 20%;
+    display: flex;
+    justify-content: flex-end;
+
+}
+
+.btn {
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: none;
+    margin-left: 5px;
+}
+.listItemBottom >input {
+    width: 50%;
+    border-radius: 5px;
+    border: none;
+    padding: 0 10px;
+}
+
+
+
+
+
+
+
+
+
+
+@media only screen and (max-width: 600px) {
+    .mainCard {
+        width: 95%;
+    }
+}
+
+/* @media only screen and (max-width: 992px) {
+    .mainCard {
+        width: 60%;
+    }
+} */
+

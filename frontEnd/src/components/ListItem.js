@@ -11,19 +11,23 @@ const ListItem = ({list, removeList, updateList}) => {
       }
 
   return (
-    <div>
-      <p>
+    <div className="listItem">
+    <div className="listItemTop">
+      
         <Link to={`/list/${list.id}`}>{list.title}</Link>
-        <button onClick={() => setShowEdit(!showEdit)}>{showEdit ? "Cancel" : "Edit"}</button>
-        <button onClick={() => removeList(list.id)}>Delete</button>{" "}
-      </p>
-      { showEdit && (
-      <div>
+        <div>
+        <button className="btn" onClick={() => setShowEdit(!showEdit)}>{showEdit ? "Cancel" : "Edit"}</button>
+        <button className="btn" onClick={() => removeList(list.id)}>Delete</button>{" "}
+        </div>
+     
+    </div>
+     { showEdit && (
+      <div className="listItemBottom">
         <input onChange={(e) => setNewText(e.target.value)} value={newText} type="text"/>
-        <button onClick={handleEdit}>submit</button>
+        <button className="btn" onClick={handleEdit}>submit</button>
       </div>
       )} 
-    </div>
+      </div>
   );
 };
 

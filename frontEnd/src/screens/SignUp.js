@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./SignUp.css";
+
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
@@ -77,7 +77,7 @@ const SignUp = () => {
   };
 
   return (
-    <div className="new-expense__controls">
+    <div className="new-expense__controls mainCard">
       
       <form onSubmit={handleSubmit}>
         <div className="">

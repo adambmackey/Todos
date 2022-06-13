@@ -10,7 +10,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     //fetch lists from the database and set into state
-   
+
     fetchLists();
   }, []);
 
@@ -22,7 +22,6 @@ const Dashboard = () => {
       console.log("dashboard line 16", err);
     }
   };
-  
 
   const addNewList = async () => {
     // let newList = { id: uuidv4(), title: newListTitle, userId: 1 };
@@ -35,9 +34,8 @@ const Dashboard = () => {
       const response = await axios.post(
         `http://localhost:5000/api/list/`,
         newObj
-        
       );
-      fetchLists()
+      fetchLists();
       setNewListTitle("");
       console.log("made post request line 36 in lists", response.data);
     } catch (err) {
@@ -52,13 +50,15 @@ const Dashboard = () => {
     // setLists(updatedLists);
 
     try {
-          const response = await axios.delete(`http://localhost:5000/api/list/${listId}` )
-          console.log('made delete request line 51 in dashboard', response.data)
-          fetchLists()
-          setNewListTitle("");
-      } catch (err) {
-        console.log("lists line 51", err);
-      }
+      const response = await axios.delete(
+        `http://localhost:5000/api/list/${listId}`
+      );
+      console.log("made delete request line 51 in dashboard", response.data);
+      fetchLists();
+      setNewListTitle("");
+    } catch (err) {
+      console.log("lists line 51", err);
+    }
   };
 
   const updateList = async (listId, text) => {
@@ -70,26 +70,29 @@ const Dashboard = () => {
     // });
     // setLists(updatedLists);
 
-        const newObj = { title: text};
+    const newObj = { title: text };
 
     try {
-          const response = await axios.put(`http://localhost:5000/api/list/${listId}`, newObj )
-          console.log('got back put request line 70 in dashboard', response.data)
-          fetchLists()
-        
-      } catch (err) {
-        console.log("dashboard line 74", err);
-      }
+      const response = await axios.put(
+        `http://localhost:5000/api/list/${listId}`,
+        newObj
+      );
+      console.log("got back put request line 70 in dashboard", response.data);
+      fetchLists();
+    } catch (err) {
+      console.log("dashboard line 74", err);
+    }
   };
 
   return (
-    <div>
-      <div className="mainCard">
+    <div className="mainCard">
+      <div className="cardContent">
         <div className="newListForm">
           <input
             value={newListTitle}
             onChange={(e) => setNewListTitle(e.target.value)}
             type="text"
+            placeholder="Enter a list name"
           />
           <button onClick={addNewList}>Add List</button>
         </div>

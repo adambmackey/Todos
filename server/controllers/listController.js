@@ -1,4 +1,4 @@
-const { List } = require("../models");
+const { List, Task } = require("../models");
 
 module.exports = {
   create: async (req, res) => {
@@ -14,8 +14,9 @@ module.exports = {
     try {
       const lists = await List.findAll({
         where: {
-          user_id: req.params.id,
-        },
+          user_id: req.params.userId,
+        }
+       
       });
       res.status(200).json(lists);
     } catch (err) {
@@ -48,5 +49,19 @@ module.exports = {
       console.log("Updating list error", err);
       res.json(err);
     }
-  }
+  },
+  getSingleList: async (req, res) => {
+    try {
+      const lists = await List.findOne({
+        where: {
+          id: req.params.id,
+        },
+       include: Task
+      });
+      res.status(200).json(lists);
+    } catch (err) {
+      console.log("getting list error", err);
+      res.json(err);
+    }
+  },
 };

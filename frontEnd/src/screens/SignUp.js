@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import "./SignUp.css";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const SignUp = () => {
   const [first, setFirst] = useState("");
@@ -14,6 +17,8 @@ const SignUp = () => {
   const [userNameErr, setUserNameErr] = useState(false);
   const [passwordErr, setPasswordErr] = useState(false);
   const [confirmPasswordErr, setConfirmPasswordErr] = useState(false);
+
+  const navigate = useNavigate()
 
   const validate = () => {
     if (first === "") {
@@ -50,29 +55,32 @@ const SignUp = () => {
       return;
     
     }
-    setFirst('')
-    setLast('')
-    setEmail('')
-    setUserName('')
-    setPassword('')
-    setConfirmPassword('')
-    // const newObj = {first: first, last: last, email: email, username: userName, password: password}
+   
 
-    // try {
-    //   const response = await axios.post(
-    //     `http://localhost:5000/api/users/signup`, newObj
-    //   );
-    //   console.log("made post request line 59 in signUp", response.data);
-    // } catch (err) {
-    //   console.log("signup line 61", err);
-    // }
+    const newObj = {first: first, last: last, email: email, username: userName, password: password}
+
+    try {
+      const response = await axios.post(
+        `http://localhost:5000/api/users/signup`, newObj
+      );
+      console.log("made post request line 59 in signUp", response.data);
+      setFirst('')
+      setLast('')
+      setEmail('')
+      setUserName('')
+      setPassword('')
+      setConfirmPassword('')
+      navigate('/dashboard')
+    } catch (err) {
+      console.log("signup line 61", err);
+    }
   };
 
   return (
-    <div>
+    <div className="new-expense__controls">
       
       <form onSubmit={handleSubmit}>
-        <div>
+        <div className="">
           <label>First Name</label>
           <input
             value={first}

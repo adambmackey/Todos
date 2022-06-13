@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const Login = () => {
 const [userName, setUserName] = useState('')
@@ -7,6 +8,7 @@ const [password, setPassword] = useState('')
 
 const [userNameErr, setUserNameErr] = useState(false)
 const [passwordErr, setPasswordErr] = useState(false)
+const navigate = useNavigate()
 
 const validate = () => {
   if(userName === ''){
@@ -23,17 +25,18 @@ const handleLoginSubmit = async (e) => {
   if(userNameErr || passwordErr){
     return
   }
-  // const newObj = { username: userName, password }
+  const newObj = { username: userName, password }
 
-  // try{
-  //   const response = await axios.post(`http://localhost:5000/api/users/login`, newObj)
-  //   console.log("made post request line 30 in login", response.data);
-  //   } catch (err) {
-  //     console.log("login line 32", err);
-  // }
+  try{
+    const response = await axios.post(`http://localhost:5000/api/users/login`, newObj)
+    console.log("made post request line 30 in login", response.data);
+    setUserName('')
+    setPassword('')
+    navigate('dashboard')
+    } catch (err) {
+      console.log("login line 32", err);
+  }
 
-  setUserName('')
-  setPassword('')
 }
 
 

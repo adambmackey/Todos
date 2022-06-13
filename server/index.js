@@ -8,6 +8,7 @@ dotenv.config()
 
 const userController = require('./controllers/userController')
 const listController = require('./controllers/listController')
+const taskController = require('./controllers/taskController')
 //middleware
 const app = express() 
 app.use(express.json())
@@ -27,15 +28,22 @@ app.put('/api/list/:listId', listController.updateList)
 // delete/ delete lists /api/lits/:id
 app.delete('/api/list/:listId', listController.deleteList)
 // get/ get lists /api/lists/:userId
-app.get('/api/list/:id', listController.getAll)
+app.get('/api/list/:userId', listController.getAll)
+
+app.get('/api/list/single/:id', listController.getSingleList)
 
 // tasks
 
 // get/ get tasks /api/tasks/:listId
+app.get('/api/task/:listId', taskController.getTasks)
 // post new task /api/tasks/:listId
+app.post('/api/task/:listId', taskController.create)
 // patch update complete /api/tasks/:listId/:taskId
+app.patch('/api/task/:taskId', taskController.toggleComplete)
 // put update title /api/tasks/:listId/:taskId
+app.put('/api/task/:taskId', taskController.updateTask)
 // delete delete title /api/tasks/:listId/:taskId
+app.delete('/api/task/:taskId', taskController.deleteTask)
 
 
 

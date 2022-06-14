@@ -20,9 +20,9 @@ function App() {
     <div className="container">
     <Header setUser={setUser}/>
     <Routes>
-    <Route path="/" exact element={<Login/>} />
+    <Route path="/" exact element={<Login setUser={setUser}/>} />
     <Route path="/dashboard" exact element={<Dashboard/>} />
-    <Route path="/signup" exact element={<SignUp/>} />
+    <Route path="/signup" exact element={<SignUp setUser={setUser}/>} />
     <Route path="/list/:id" exact element={<List/>} />
    
     </Routes>

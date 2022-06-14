@@ -1,22 +1,28 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { UserContext } from "../App";
 import { v4 as uuidv4 } from "uuid";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import ListItem from "../components/ListItem";
 import axios from "axios";
 
 const Dashboard = () => {
   const [lists, setLists] = useState([]);
   const [newListTitle, setNewListTitle] = useState("");
-
+  const user = useContext(UserContext)
+  const navigate = useNavigate()
   useEffect(() => {
     //fetch lists from the database and set into state
+    if(user){
 
-    fetchLists();
+      fetchLists();
+    } else {
+      navigate('/')
+    }
   }, []);
 
   const fetchLists = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/api/list/1");
+      const response = await axios.get(`http://localhost:5000/api/list/${user.id}`);
       setLists(response.data);
     } catch (err) {
       console.log("dashboard line 16", err);
@@ -28,7 +34,7 @@ const Dashboard = () => {
     // setLists([...lists, newList]);
     // setNewListTitle("");
 
-    const newObj = { title: newListTitle, user_id: 1 };
+    const newObj = { title: newListTitle, user_id: user.id };
 
     try {
       const response = await axios.post(
@@ -87,6 +93,7 @@ const Dashboard = () => {
   return (
     <div className="mainCard">
       <div className="cardContent">
+      <h3 className="titleH3">Your Todo Lists</h3>
         <div className="newListForm">
           <input
             value={newListTitle}

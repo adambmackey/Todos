@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 
-const SignUp = () => {
+const SignUp = ({setUser}) => {
   const [first, setFirst] = useState("");
   const [last, setLast] = useState("");
   const [email, setEmail] = useState("");
@@ -66,6 +66,7 @@ const SignUp = () => {
       const response = await axios.post(
         `http://localhost:5000/api/users/signup`, newObj
       );
+      setUser(response.data)
       console.log("made post request line 59 in signUp", response.data);
       setFirst('')
       setLast('')

@@ -56,7 +56,8 @@ module.exports = {
         where: {
           id: req.params.id,
         },
-       include: Task
+       include: Task,
+       order: [[Task, 'createdAt', 'ASC']]
       });
       res.status(200).json(lists);
     } catch (err) {

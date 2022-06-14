@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Dashboard from './Dashboard';
 
-const Login = () => {
+const Login = ({setUser}) => {
 const [userName, setUserName] = useState('')
 const [password, setPassword] = useState('')
 
@@ -31,6 +31,7 @@ const handleLoginSubmit = async (e) => {
 
   try{
     const response = await axios.post(`http://localhost:5000/api/users/login`, newObj)
+    setUser(response.data)
     console.log("made post request line 30 in login", response.data);
     localStorage.setItem('todoUser', JSON.stringify(response.data))
     setUserName('')

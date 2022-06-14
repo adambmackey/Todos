@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 
 const SignUp = () => {
@@ -43,15 +43,18 @@ const SignUp = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    validate();
+     validate();
+  
+
+  
     if (
-      firstNameErr ||
-      lastNameErr ||
-      emailErr ||
-      userNameErr ||
-      passwordErr ||
-      confirmPasswordErr
-    ) {
+      firstNameErr === true ||
+      lastNameErr  === true ||
+      emailErr  === true ||
+      userNameErr  === true ||
+      passwordErr  === true ||
+      confirmPasswordErr  === true
+    ) { console.log('error here')
       return;
     
     }
@@ -74,13 +77,16 @@ const SignUp = () => {
     } catch (err) {
       console.log("signup line 61", err);
     }
+
   };
 
   return (
-    <div className="new-expense__controls mainCard">
+    <div className="new-expense__controls mainCard loginContainer">
       
-      <form onSubmit={handleSubmit}>
-        <div className="">
+      <form onSubmit={handleSubmit} className="Form signUpForm">
+        <h3>Sign Up</h3>
+        <div className="names">
+        <div className="internalForm">
           <label>First Name</label>
           <input
             value={first}
@@ -93,7 +99,7 @@ const SignUp = () => {
           )}
         </div>
 
-        <div>
+        <div className="internalForm">
           <label>Last Name</label>
           <input
             value={last}
@@ -105,7 +111,8 @@ const SignUp = () => {
             <p className="errorMessage">Last name is required dude!!</p>
           )}
         </div>
-        <div>
+        </div>
+        <div className="internalForm">
           <label>Email</label>
           <input
             value={email}
@@ -117,7 +124,7 @@ const SignUp = () => {
             <p className="errorMessage">Email is required you dipstick!!</p>
           )}
         </div>
-        <div>
+        <div className="internalForm">
           <label>UserName</label>
           <input
             value={userName}
@@ -127,7 +134,7 @@ const SignUp = () => {
           />
           {userNameErr && <p className="errorMessage">Username is required!</p>}
         </div>
-        <div>
+        <div className="internalForm">
           <label>Password</label>
           <input
             value={password}
@@ -141,7 +148,7 @@ const SignUp = () => {
             </p>
           )}
         </div>
-        <div>
+        <div className="internalForm">
           <label>Confirm Password</label>
           <input
             value={confirmPassword}
@@ -155,7 +162,11 @@ const SignUp = () => {
             </p>
           )}
         </div>
-        <button type="submit" >Submit</button>
+        <div className='loginBtn'>
+        <p>Already have an account? <Link to="/">Login</Link></p>
+        <button type='submit' className='btn'>Sign Up</button>
+        </div>
+
       </form>
     </div>
   );

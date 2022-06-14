@@ -104,7 +104,7 @@ const List = () => {
   return (
     <div className="mainCard">
       <div className="cardContent">
-      <h3>{title}</h3>
+      <h3 className="titleH3">{title}</h3>
       <AddTodo addNewTask={addNewTask} />
       <div>
         {tasks.map((task) => {

@@ -109,7 +109,7 @@ const Dashboard = () => {
               <ListItem
                 key={list.id}
                 list={list}
-                removeList={removeList}
+                removeList={removeList }
                 updateList={updateList}
               />
             );

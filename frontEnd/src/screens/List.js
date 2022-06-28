@@ -92,6 +92,7 @@ const List = () => {
 
 
     try {
+      
       const response = await axios.delete(`http://localhost:5000/api/task/${taskId}` )
       console.log('made delete request line 86 in lists', response.data)
       fetchTasks()
